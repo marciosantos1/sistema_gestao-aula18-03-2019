@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class Colaborador {
+public class CadastrarColaborador {
     protected String tipo;
     protected String usuario;
     protected String senha;
@@ -21,10 +21,10 @@ public class Colaborador {
     private String editarTarefa;
     
     
-    
-    
-
+  
     public int getEquipe(){
+        String sql = "SELECT codEquipe from equipe";
+        System.out.println(sql);
         return equipe;
     }
     public void setEquipe(int equipe){

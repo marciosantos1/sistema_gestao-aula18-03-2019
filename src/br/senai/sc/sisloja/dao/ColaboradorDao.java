@@ -1,6 +1,6 @@
 package br.senai.sc.sisloja.dao;
 
-import br.senai.sc.sisGestao.modelo.Colaborador;
+import br.senai.sc.sisGestao.modelo.CadastrarColaborador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class ColaboradorDao extends ConnectionFactory {
         this.con = this.getConnection();
     }
 
-    public void inserir(Colaborador col) throws SQLException {
+    public void inserir(CadastrarColaborador col) throws SQLException {
 
         String sql = "insert into colaborador "
                 + "(tipo, usuario, "
@@ -53,7 +53,7 @@ public class ColaboradorDao extends ConnectionFactory {
 
     }
 
-    public void alterar(Colaborador col) throws SQLException {
+    public void alterar(CadastrarColaborador col) throws SQLException {
 
         String sql = "update colaborador set tipo = ?, usuario = ?, senha = ?, "
                 + "nome = ?, endereco = ? where codColaborador = ?";
@@ -73,17 +73,17 @@ public class ColaboradorDao extends ConnectionFactory {
 
     }
 
-    public List<Colaborador> listarColaboradores() throws SQLException {
+    public List<CadastrarColaborador> listarColaboradores() throws SQLException {
         String sql = "select * from colaborador";
-        List<Colaborador> colaboradores = null;
+        List<CadastrarColaborador> colaboradores = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             ResultSet rs = st.executeQuery();
 
-            colaboradores = new ArrayList<Colaborador>();
+            colaboradores = new ArrayList<CadastrarColaborador>();
 
             while (rs.next()) {
-                Colaborador c = new Colaborador();
+                CadastrarColaborador c = new CadastrarColaborador();
                 c.setTipo("tipo");
                 c.setUsuario("usuario");
                 c.setSenha("senha");
@@ -103,15 +103,15 @@ public class ColaboradorDao extends ConnectionFactory {
         return colaboradores;
     }
 
-    public Colaborador getColaborador(int codColaborador) throws SQLException {
+    public CadastrarColaborador getColaborador(int codColaborador) throws SQLException {
         String sql = "select * from colaborador where codColaborador = ?";
-        Colaborador colaborador = null;
+        CadastrarColaborador colaborador = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setInt(1, codColaborador);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
-                    Colaborador c = new Colaborador();
+                    CadastrarColaborador c = new CadastrarColaborador();
                     c.setTipo("tipo");
                     c.setUsuario("usuario");
                     c.setSenha("senha");
