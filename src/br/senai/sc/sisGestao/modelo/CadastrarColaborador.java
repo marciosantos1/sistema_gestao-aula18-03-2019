@@ -125,4 +125,8 @@ public class CadastrarColaborador {
         return autenticado;
     }
 
+    public void setEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
