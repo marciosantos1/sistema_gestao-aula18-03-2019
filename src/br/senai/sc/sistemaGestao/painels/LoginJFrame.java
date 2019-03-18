@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senai.sc.sistemaGestao;
+package br.senai.sc.sistemaGestao.painels;
 
 import br.senai.sc.sisloja.dao.ColaboradorDao;
 import br.senai.sc.sisGestao.conexao.ConnectionFactory;
@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
  *
  * @author Kathu
  */
-public class Login extends javax.swing.JFrame {
+public class LoginJFrame extends javax.swing.JFrame {
 
-    public Login() {
+    public LoginJFrame() {
         initComponents();
     }
 
@@ -39,11 +39,11 @@ public class Login extends javax.swing.JFrame {
         cpUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         buttonLogin = new javax.swing.JButton();
-        cpSenha = new javax.swing.JFormattedTextField();
         comboCargo = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        cpSenha = new javax.swing.JPasswordField();
 
         jLabel5.setText("jLabel5");
 
@@ -62,12 +62,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        try {
-            cpSenha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("***************")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione...", "Colaborador", "Gestor"}));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -76,6 +70,12 @@ public class Login extends javax.swing.JFrame {
         jButton1.setText("Registrar");
 
         jButton2.setText("Esqueci a senha");
+
+        cpSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpSenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,10 +98,10 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cpSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(0, 77, Short.MAX_VALUE))
+                .addGap(0, 78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,20 +136,30 @@ public class Login extends javax.swing.JFrame {
         ValidarLogin val = new ValidarLogin();
 
         String usuario = cpUsuario.getText();
-        String senha = cpSenha.getText();
+        char[] senha = cpSenha.getPassword();
         String cargo = comboCargo.getSelectedItem().toString();
 
-        if (val.checkLogin(usuario, senha, cargo)) {
+        String senhaString = "";
+        for (int i = 0; i < senha.length; i++) {
+            System.out.println(senha[i]);
+            senhaString = senhaString+senha[i];
+        }
+        
+         if (val.checkLogin(usuario, senhaString, cargo)) {
             this.dispose();
             if (cargo.equals("Gestor") || cargo.equals("gestor")) {
-                JOptionPane.showMessageDialog(null, "é gesto memo");
+                
             } else {
-                JOptionPane.showMessageDialog(null, "num é gestor");
+                
             }
         }
 
 
     }//GEN-LAST:event_buttonLoginMouseClicked
+
+    private void cpSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,24 +179,25 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class
+            java.util.logging.Logger.getLogger(LoginJFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class
+            java.util.logging.Logger.getLogger(LoginJFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class
+            java.util.logging.Logger.getLogger(LoginJFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class
+            java.util.logging.Logger.getLogger(LoginJFrame.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginJFrame().setVisible(true);
             }
         });
     }
@@ -194,7 +205,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonLogin;
     private javax.swing.JComboBox comboCargo;
-    private javax.swing.JFormattedTextField cpSenha;
+    private javax.swing.JPasswordField cpSenha;
     private javax.swing.JTextField cpUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -203,4 +214,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
+
+    private static class Char {
+
+        public Char() {
+        }
+    }
 }

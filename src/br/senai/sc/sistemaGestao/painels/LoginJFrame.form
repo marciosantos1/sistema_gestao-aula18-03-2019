@@ -50,12 +50,12 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cpSenha" min="-2" pref="97" max="-2" attributes="0"/>
+                      <Component id="cpSenha" min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
                   <Component id="buttonLogin" min="-2" pref="92" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,13 +111,6 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonLoginMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="cpSenha">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="***************" subtype="-1" type="5"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JComboBox" name="comboCargo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -142,6 +135,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Esqueci a senha"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="cpSenha">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpSenhaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

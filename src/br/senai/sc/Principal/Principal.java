@@ -5,10 +5,13 @@
  */
 package br.senai.sc.Principal;
 
+import br.senai.sc.sistemaGestao.painels.LoginJFrame;
+
 public class Principal {
-    public static void main(String[]args){
-     
-       
-        
+
+    public static void main(String[] args) {
+        LoginJFrame login = new LoginJFrame();
+        login.setVisible(true);
+
     }
 }
