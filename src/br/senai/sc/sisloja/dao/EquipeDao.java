@@ -54,9 +54,10 @@ public class EquipeDao extends ConnectionFactory {
         String sql = "update equipe set nome = ?, descricao = ? where codEquipe = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setString(1, eq.getNome());
-            st.setString(2, eq.getDescricao());
-  
+            st.setString(1, eq.getAtualizarNome());
+            st.setString(2, eq.getAtualizarDescricao());
+            st.setString(3, eq.getCodEquipe());
+            
             st.execute();
             st.close();
         }
