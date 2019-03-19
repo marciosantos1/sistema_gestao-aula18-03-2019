@@ -60,7 +60,7 @@ public class EquipeJFrame extends javax.swing.JFrame {
         jDescricaoEquipe.setRows(5);
         jScrollPane1.setViewportView(jDescricaoEquipe);
 
-        jSalvar.setText("jButton1");
+        jSalvar.setText("Salvar");
         jSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jSalvarMouseClicked(evt);
